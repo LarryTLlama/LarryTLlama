@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+function hide(id) {
+  var x = document.getElementById(id);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function FindPosition(oElement)
+{
+  if(typeof( oElement.offsetParent ) != "undefined")
+  {
+    for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
+    {
+      posX += oElement.offsetLeft;
+      posY += oElement.offsetTop;
+    }
+      return [ posX, posY ];
+    }
+    else
+    {
+      return [ oElement.x, oElement.y ];
+    }
+}
+
+function GetCoordinates(e)
+{
+  var PosX = 0;
+  var PosY = 0;
+  var ImgPos;
+  ImgPos = FindPosition(myImg);
+  if (!e) var e = window.event;
+  if (e.pageX || e.pageY)
+  {
+    PosX = e.pageX;
+    PosY = e.pageY;
+  }
+  else if (e.clientX || e.clientY)
+    {
+      PosX = e.clientX + document.body.scrollLeft
+        + document.documentElement.scrollLeft;
+      PosY = e.clientY + document.body.scrollTop
+        + document.documentElement.scrollTop;
+    }
+  PosX = PosX - ImgPos[0];
+  PosY = PosY - ImgPos[1];
+  document.getElementById("x").innerHTML = PosX;
+  document.getElementById("y").innerHTML = PosY;
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+
+html {
+zoom: 75%;
+overflow: hidden!important;
+}
+
+body {
+height: 100%;
+background-image: url('desktop.png');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%; 
+}
+
+html,body,#container {
+    height:100%;
+}
+#container {
+    width:100%;
+    position:relative;
+}
+#container > img {
+    position:absolute;
+    top:0; left:0; right:0; bottom:0;
+    margin:auto;
+}
+
+.window {
+display: none;
+}
+
+#explorer {
+width: 65%;
+}
+
+#shutdown {
+width: 30%;
+}
+
+#recyclebin {
+width: 20%;
+}
+
+#taskmanager {
+width: 23%;
+}
+
+#cmd {
+width: 65%;
+}
+
+.desktopicon {
+width: 82px;
+height: 75px;
+background: transparent;
+float: left;
+position: absolute;
+border: transparent;
+}
+
+.taskbaricon {
+width: 42px;
+height: 35px;
+background: transparent;
+float: left;
+position: absolute;
+margin-top: 840px;
+margin-bottom: 0px;
+border: transparent;
+}
+
+#slightlyTaller {
+height: 90px;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<!--Desktop Icons-->
+<a href="javascript:hide('recyclebin')">
+<button style="margin-top: 7px;" class="desktopicon">
+</button>
+</a>
+
+<a href="https://www.github.com/LarryTLlama/GetRadio">
+<button style="margin-top: 130px;" class="desktopicon">
+</button>
+</a>
+
+<a href="https://larrytllama.github.io/LlamaBot">
+<button style="margin-top: 250px;" class="desktopicon">
+</button>
+</a>
+
+<a href="https://www.github.com/LarryTLlama/Node-RadioText">
+<button style="margin-top: 375px;" id="slightlyTaller" class="desktopicon">
+</button>
+</a>
+
+<!--Taskbar Icons-->
+<a href="javascript:hide('shutdown')">
+<button style="margin-left: 0px;" class="taskbaricon">
+</button>
+</a>
+
+<a href="javascript:hide('taskmanager')">
+<button style="margin-left: 47px;" class="taskbaricon">
+</button>
+</a>
+
+<a href="javascript:hide('explorer')">
+<button style="margin-left: 97px;" class="taskbaricon">
+</button>
+</a>
+
+<a href="javascript:hide('cmd')">
+<button style="margin-left: 143px;" class="taskbaricon">
+</button>
+</a>
+
+<!--File Explorer-->
+
+<map name="explorermap">
+  <area shape="rect" coords="1110,2,1152,26" alt="Computer" href="javascript:hide('explorer')">
+  <area shape="rect" coords="101,132,874,150" alt="Phone" href="https://github.com/LarryTLlama/GetRadio">
+  <area shape="rect" coords="101,158,874,172" alt="Phone" href="https://larrytllama.github.io/LlamaBot">
+  <area shape="rect" coords="101,179,874,192" alt="Phone" href="https://github.com/LarryTLlama/Node-RadioText">
+  <area shape="circle" coords="337,300,44" alt="Coffee" href="coffee.htm">
+</map>
+<img class="window" id="explorer" src="FileExplorer (1).png" usemap="#explorermap"></img>
+
+<!--Shut Down-->
+<map name="shutdownmap">
+  <area shape="rect" coords="344,238,422,258" alt="Computer" href="about:blank">
+  <area shape="rect" coords="436,237,518,257" alt="Phone" href="javascript:hide('shutdown')">
+</map>
+<img class="window" id="shutdown" src="ShutDown.png" usemap="#shutdownmap"></img>
+
+<!--Recycle Bin-->
+<map name="recyclebinmap">
+  <area shape="rect" coords="325,3,353,23" alt="Computer" href="javascript:hide('recyclebin')">
+  <area shape="rect" coords="236,139,331,168" alt="Phone" href="javascript:hide('recyclebin')">
+</map>
+<img class="window" id="recyclebin" src="RecycleBin.png" usemap="#recyclebinmap"></img>
+
+<!--Task Manager-->
+<map name="taskmanagermap">
+  <area shape="rect" coords="300,131,384,151" alt="Computer" href="javascript:hide('taskmanager')">
+  <area shape="rect" coords="379,4,408,25" alt="Phone" href="javascript:hide('taskmanager')">
+</map>
+<img class="window" id="taskmanager" src="TaskManager.png" usemap="#taskmanagermap"></img>
+
+<!--Command Prompt-->
+<img class="window" id="cmd" src="cmd.png" onkeypress="hide('cmd')"></img>
+
+<script>
+document.onkeydown = function (e) {
+if((document.getElementById('cmd').style.display === 'block') || (document.getElementById('cmd').style.display === '')) {
+document.getElementById('cmd').style.display = "none";
+}
+}
+</script>
+
+</div>
+</body>
+</html>
