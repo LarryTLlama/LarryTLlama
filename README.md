@@ -1,4 +1,10 @@
-### Hi there 👋
+### Hey there 👋
+I'm Larry, a full-stack developer looking to make the internet a better place!
+
+🔭 Currently working on Javascript applications and services, as well as HTML web pages!
+
+📫 Public Inbox: larrytllama5@gmail.com
+💬 Discord: LarryTLlama#8588
 
 <!--
 **LarryTLlama/LarryTLlama** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
