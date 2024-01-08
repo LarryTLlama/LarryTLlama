@@ -4,7 +4,7 @@ I'm Larry, a full-stack developer looking to make the internet a better place!
 🔭 Currently working on full-stack web applications! 
 
 📫 Public Inbox: larrytllama@duck.com
-💬 Discord: LarryTLlama#8588
+💬 Discord: `@larrytllama`
 
 <!--
 **LarryTLlama/LarryTLlama** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
